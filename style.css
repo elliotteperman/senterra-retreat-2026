@@ -42,7 +42,7 @@ h1, h2 { font-family: "Roboto Slab", Georgia, serif; font-weight: 600; }
 }
 .site-nav a:hover { background: var(--accent-soft); }
 .site-nav a[aria-current] { background: var(--accent); color: #fff; }
-.embed .site-nav, .embed .eyebrow { display: none; }
+.embed .site-nav, .embed .eyebrow, .embed .page-head h1 { display: none; }
 .embed main { padding-top: 8px; }
 
 .page-head { margin-bottom: 24px; }
