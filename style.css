@@ -243,3 +243,43 @@ dialog#detail::backdrop { background: rgba(15,22,40,.45); }
 .m-who { margin: 4px 0 12px; }
 .m-who h4 { margin: 0 0 4px; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
 .m-who .leader { display: block; font-size: 15px; color: var(--muted); margin-bottom: 2px; }
+
+/* Home + travel pages */
+.hero { display: block; width: 100%; max-height: 440px; object-fit: cover; border-radius: 12px; margin: 0 0 28px; }
+.page-head .lede + .lede { margin-top: 10px; }
+.page-head .notice { margin-top: 16px; }
+.home-section { margin: 40px 0; }
+.home-section h2 { font-size: 26px; margin: 0 0 10px; }
+.home-section h3 { font-size: 17px; margin: 18px 0 4px; }
+.home-section p { max-width: 75ch; }
+.home-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.home-card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
+.home-card h2, .home-card h3 { margin-top: 0; }
+.home-card h2 { font-size: 24px; margin-bottom: 8px; }
+.home-card .eyebrow { margin: 0 0 4px; text-transform: uppercase; font-weight: 700; font-size: 12px; color: var(--accent); }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 0; }
+.btn { display: inline-block; padding: 9px 16px; border-radius: 999px; background: var(--accent); color: #fff;
+  text-decoration: none; font-weight: 500; border: 1px solid var(--accent); }
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn:hover { filter: brightness(1.08); }
+.food { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
+.food img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; }
+.activities { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px; margin-top: 16px; }
+.card-img { margin: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--panel); }
+.card-img img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.card-img figcaption { padding: 12px 14px 14px; font-size: 14px; color: var(--muted); }
+.card-img strong { display: block; color: var(--ink); font-size: 16px; margin-bottom: 2px; }
+.steps { padding-left: 20px; margin: 8px 0 0; }
+.steps li { margin-bottom: 8px; }
+.airports { width: 100%; border-collapse: collapse; font-size: 15px; margin: 12px 0 16px; }
+.airports th, .airports td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+.airports thead th { font-size: 13px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
+.airports tbody th { font-weight: 700; white-space: nowrap; }
+@media (max-width: 760px) {
+  .food { grid-template-columns: 1fr; }
+  .airports thead { display: none; }
+  .airports tr { display: block; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .airports th, .airports td { display: block; border: 0; padding: 2px 0; }
+  .airports tbody th { white-space: normal; font-size: 16px; }
+  .airports td::before { content: attr(data-label) ": "; color: var(--muted); font-size: 13px; }
+}
