@@ -264,6 +264,10 @@ dialog#detail::backdrop { background: rgba(15,22,40,.45); }
 .btn:hover { filter: brightness(1.08); }
 .food, .split { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
 .food img, .split img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; }
+.home-card .small { font-size: 13px; color: var(--muted); margin-bottom: 0; }
+.with-qr { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.qr { margin: 0; text-align: center; font-size: 12px; color: var(--muted); }
+.qr img { display: block; width: 120px; height: 120px; background: #fff; border-radius: 8px; padding: 4px; margin-bottom: 4px; }
 .home-more-list { margin: 40px 0; border-bottom: 1px solid var(--line); }
 details.home-more { border-top: 1px solid var(--line); }
 details.home-more > summary {
