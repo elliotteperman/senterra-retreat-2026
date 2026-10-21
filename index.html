@@ -6,7 +6,7 @@
 <title>Senterra Retreat 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@500;600&display=swap">
-<link rel="stylesheet" href="style.css?v=aea066e2">
+<link rel="stylesheet" href="style.css?v=cf0ef9ba">
 <script>if (/[?&]embed=1/.test(location.search)) document.documentElement.classList.add('embed');</script>
 </head>
 <body>
@@ -47,16 +47,42 @@ rides and connect with other attendees.</p>
 </article>
 </section>
 
-<section class="home-section">
-<h2>Hotel</h2>
+<section class="home-more-list">
+<details class="home-more">
+<summary><h2>Hotel</h2></summary>
 <p>Our retreat unfolds at <a href="https://www.theabbeyinn.com/">The Abbey Inn &amp; Spa</a>, a beautifully restored
 historic landmark and former convent in Peekskill, New York. Once a contemplative monastery, it now offers a serene
 escape blending timeless architecture with modern comforts.</p>
-</section>
+<p><strong>Address:</strong> <a href="https://www.google.com/maps/search/?api=1&query=The+Abbey+Inn+%26+Spa+900+Fort+Hill+Rd+Peekskill+NY">900 Fort Hill Rd, Peekskill, NY 10566</a> &middot; <a href="tel:+19147361200">(914) 736-1200</a></p>
+</details>
 
-<section class="home-section food">
+<details class="home-more">
+<summary><h2>Gym</h2></summary>
+<div class="split">
 <div>
-<h2>Food &amp; gathering</h2>
+<p>The gym is about 600 feet / 200 meters from the hotel, located in the "200" building of the
+<a href="https://maps.app.goo.gl/1Phcw1YL842sGXTGA">Fort Hill Apartments</a> across the street. We provide maps and a key fob that is required to
+enter the 2nd door leading into the building.</p>
+<p>The gym is located in the basement of that building: take the elevator down one floor, then take a left into the
+hallway. The gym is open 24/7.</p>
+<p class="actions"><a class="btn ghost" href="https://maps.app.goo.gl/1Phcw1YL842sGXTGA">Open in Google Maps</a></p>
+</div>
+<img src="img/gym.jpg" alt="The gym, with treadmills, bikes and weight machines" loading="lazy">
+</div>
+</details>
+
+<details class="home-more">
+<summary><h2>Weather</h2></summary>
+<p>Late October in the Hudson Valley averages highs of 57&deg;F and lows of 41&deg;F, so bring layers and a warm jacket.</p>
+<div class="wx" id="wx"><p class="tbc">Loading the Peekskill forecast&hellip;</p></div>
+<p class="wx-note">Forecast from <a href="https://open-meteo.com/">Open-Meteo</a>. Full forecast:
+<a href="https://forecast.weather.gov/MapClick.php?lat=41.2948&lon=-73.9157">weather.gov</a>.</p>
+</details>
+
+<details class="home-more">
+<summary><h2>Food &amp; gathering</h2></summary>
+<div class="split">
+<div>
 <p>All meals will be shared on-site, with time built in for conversation, rest, and informal connection.</p>
 <h3>Apropos Restaurant</h3>
 <p>The Abbey's farm-to-table restaurant, rooted in the seasons and inspired by the Hudson Valley.</p>
@@ -64,13 +90,54 @@ escape blending timeless architecture with modern comforts.</p>
 <p>Group dining designed to foster connection beyond the formal agenda.</p>
 </div>
 <img src="img/food.jpg" alt="" loading="lazy">
-</section>
+</div>
+</details>
 
-<section class="home-section">
-<h2>Nearby nature &amp; activities</h2>
+<details class="home-more">
+<summary><h2>Nearby nature &amp; activities</h2></summary>
 <p>Arrive early, stay later, or use free time to explore the Hudson Valley.</p>
 <div class="activities"><figure class="card-img"><img src="img/fort-hill.jpg" alt="Fort Hill Trail" loading="lazy"><figcaption><strong>Fort Hill Trail</strong>Steps from The Abbey. Two routes, just under a mile each.</figcaption></figure><figure class="card-img"><img src="img/bear-mountain.jpg" alt="Bear Mountain" loading="lazy"><figcaption><strong>Bear Mountain</strong>~13 min away. Hiking, lake views, and Highlands scenery.</figcaption></figure><figure class="card-img"><img src="img/breakneck.jpg" alt="Breakneck Ridge" loading="lazy"><figcaption><strong>Breakneck Ridge</strong>~20 min away. Steep climbs and sweeping Hudson River views.</figcaption></figure><figure class="card-img"><img src="img/peekskill-landing.jpg" alt="Peekskill Landing" loading="lazy"><figcaption><strong>Peekskill Landing</strong>~1 mile away. Shoreline boardwalk and river views.</figcaption></figure></div>
+</details>
 </section>
+<script>
+(function () {
+  var box = document.getElementById('wx');
+  var url = 'https://api.open-meteo.com/v1/forecast?latitude=41.2948&longitude=-73.9157'
+    + '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max'
+    + '&temperature_unit=fahrenheit&timezone=America%2FNew_York&forecast_days=16';
+  var label = function (c) {
+    if (c === 0) return 'Clear';
+    if (c <= 2) return 'Partly cloudy';
+    if (c === 3) return 'Overcast';
+    if (c <= 48) return 'Fog';
+    if (c <= 57) return 'Drizzle';
+    if (c <= 67) return 'Rain';
+    if (c <= 77) return 'Snow';
+    if (c <= 82) return 'Showers';
+    if (c <= 86) return 'Snow showers';
+    return 'Thunderstorms';
+  };
+  fetch(url).then(function (r) { return r.json(); }).then(function (d) {
+    var days = d.daily, idx = [];
+    ['2026-10-28', '2026-10-29', '2026-10-30'].forEach(function (t) {
+      var i = days.time.indexOf(t);
+      if (i !== -1) idx.push(i);
+    });
+    if (!idx.length) idx = [0, 1, 2, 3, 4];
+    box.innerHTML = idx.map(function (i) {
+      var day = new Date(days.time[i] + 'T12:00:00');
+      var name = day.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+      return '<div class="wx-day"><strong>' + name + '</strong>'
+        + '<span class="wx-temp">' + Math.round(days.temperature_2m_max[i]) + '&deg; / '
+        + Math.round(days.temperature_2m_min[i]) + '&deg;F</span>'
+        + '<span>' + label(days.weather_code[i]) + '</span>'
+        + '<span class="wx-rain">' + days.precipitation_probability_max[i] + '% chance of rain</span></div>';
+    }).join('');
+  }).catch(function () {
+    box.innerHTML = '<p class="tbc">The forecast could not be loaded. See weather.gov below.</p>';
+  });
+})();
+</script>
 </main>
 
 </body>

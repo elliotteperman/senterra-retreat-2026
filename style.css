@@ -262,8 +262,28 @@ dialog#detail::backdrop { background: rgba(15,22,40,.45); }
   text-decoration: none; font-weight: 500; border: 1px solid var(--accent); }
 .btn.ghost { background: transparent; color: var(--accent); }
 .btn:hover { filter: brightness(1.08); }
-.food { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
-.food img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; }
+.food, .split { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
+.food img, .split img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; }
+.home-more-list { margin: 40px 0; border-bottom: 1px solid var(--line); }
+details.home-more { border-top: 1px solid var(--line); }
+details.home-more > summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 0;
+  cursor: pointer; list-style: none;
+}
+details.home-more > summary::-webkit-details-marker { display: none; }
+details.home-more > summary h2 { font-size: 24px; margin: 0; }
+details.home-more > summary::after { content: "+"; font-size: 26px; line-height: 1; color: var(--accent); }
+details.home-more[open] > summary::after { content: "\2212"; }
+details.home-more > :not(summary) { margin-top: 0; }
+details.home-more[open] { padding-bottom: 24px; }
+details.home-more p { max-width: 75ch; }
+details.home-more h3 { font-size: 17px; margin: 18px 0 4px; }
+.wx { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin: 12px 0; }
+.wx-day { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 10px; font-size: 14px; color: var(--muted); }
+.wx-day strong { color: var(--ink); font-size: 15px; }
+.wx-temp { color: var(--ink); font-size: 20px; font-weight: 500; }
+.wx-note { font-size: 13px; color: var(--muted); }
 .activities { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px; margin-top: 16px; }
 .card-img { margin: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--panel); }
 .card-img img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
@@ -275,8 +295,9 @@ dialog#detail::backdrop { background: rgba(15,22,40,.45); }
 .airports th, .airports td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
 .airports thead th { font-size: 13px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
 .airports tbody th { font-weight: 700; white-space: nowrap; }
+.airports a[href^="tel:"] { white-space: nowrap; }
 @media (max-width: 760px) {
-  .food, .home-grid { grid-template-columns: 1fr; }
+  .food, .split, .home-grid { grid-template-columns: 1fr; }
   .airports thead { display: none; }
   .airports tr { display: block; padding: 12px 0; border-bottom: 1px solid var(--line); }
   .airports th, .airports td { display: block; border: 0; padding: 2px 0; }
