@@ -223,11 +223,11 @@ dialog#detail::backdrop { background: rgba(15,22,40,.45); }
 /* Per-day agenda grids: side by side, scale with the window, stack on phones */
 .agenda-days { --slot: clamp(20px, 1.9vw, 30px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(8px, 1.2vw, 18px); font-size: clamp(11px, 0.95vw, 14.5px); margin-top: 8px; }
-.day-grid { display: grid; grid-template-columns: 3.4em minmax(0, 1fr) minmax(0, 1fr);
+.day-grid { display: grid; grid-template-columns: 4.6em minmax(0, 1fr) minmax(0, 1fr);
   border: 1px solid var(--grid-line); border-radius: 10px; overflow: hidden; background: var(--bg); }
 .day-grid .g-day { border-left: 0; font-size: 1.1em; padding: .55em .4em; background: var(--panel);
   border-bottom: 1px solid var(--grid-line); }
-.day-grid .g-time { font-size: .85em; padding: .25em .4em; }
+.day-grid .g-time { font-size: .85em; padding: .25em .4em; white-space: nowrap; }
 .day-grid .g-item { font-size: 1em; margin: 1px 2px; }
 .day-grid .g-item.short { font-size: .9em; }
 .day-grid .b-who { font-size: .88em; }
