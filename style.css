@@ -308,3 +308,5 @@ details.home-more h3 { font-size: 17px; margin: 18px 0 4px; }
   .airports tbody th { white-space: normal; font-size: 16px; }
   .airports td::before { content: attr(data-label) ": "; color: var(--muted); font-size: 13px; }
 }
+.g-item.tight { padding: 1px 4px; font-size: 12px; line-height: 1.15; gap: 0; }
+.g-item.tight .b-who .b-room { font-size: 1em; }
