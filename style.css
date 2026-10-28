@@ -161,8 +161,8 @@ img.avatar { object-fit: cover; width: 56px; height: 56px; }
 }
 
 @media (max-width: 420px) {
-  .site-nav { gap: 2px; padding: 8px; flex-wrap: nowrap; }
-  .site-nav a { padding: 7px 10px; font-size: 14px; white-space: nowrap; }
+  .site-nav { gap: 2px; padding: 8px; flex-wrap: nowrap; justify-content: safe center; overflow-x: auto; }
+  .site-nav a { padding: 7px 7px; font-size: 13px; white-space: nowrap; }
 }
 
 /* Agenda grid (spreadsheet style) */
@@ -310,3 +310,7 @@ details.home-more h3 { font-size: 17px; margin: 18px 0 4px; }
 }
 .g-item.tight { padding: 1px 4px; font-size: 12px; line-height: 1.15; gap: 0; }
 .g-item.tight .b-who .b-room { font-size: 1em; }
+
+/* Hotel map page */
+.map-link { display: block; max-width: 820px; }
+.map-img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
